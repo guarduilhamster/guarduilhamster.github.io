@@ -1,0 +1,61 @@
+<h1>Hamster Tummy Rubber!</h1> 
+<h2> by GuarduilHamster at SuperNOVA</h2>
+
+<p>Times the hamster's tummy was rubbed:
+<span id="clicks">0</span>
+</p>
+
+<p id="countdown"></p>
+
+<img
+src="hamster.gif"
+width="100px"
+onclick="add()"> 
+
+<p id="message"></p>
+
+<script>
+	var canClick = false;
+	var clicks = document.getElementById("clicks");
+	var message = document.getElementById("message");
+	var startCount = document.getElementById("countdown");
+	var numberOfClicks = 0;
+	var initialCountDown = 4;
+	function add() {
+		if (canClick == true) {
+			numberOfClicks = numberOfClicks + 1;
+			clicks.innerHTML = numberOfClicks;
+		}
+	}
+	function timeOut() {
+		canClick = false;
+		message.innerHTML = "You gave the hamster " + numberOfClicks + " tummy rubs in 5 seconds!";
+	}
+	function initialCounter() {
+		initialCountDown = initialCountDown - 1;
+		startCount.innerHTML = initialCountDown;
+		if (initialCountDown == 0) { 
+			startCount.innerHTML = "Tummy Rub!";
+			canClick = true;
+			setTimeout(timeOut, 5000);
+		}
+		else {
+			setTimeout(initialCounter, 1000);
+		}
+	}
+	initialCounter();
+	</script>
+	
+<style>
+body {
+	background-color: orange
+
+}
+#countdown {
+	font-size: 300%;
+}
+</style>
+
+
+
+
